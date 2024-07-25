@@ -1,12 +1,46 @@
 // create square grids using loop
 
 const easContainer = document.querySelector("#whiteboard-container");
+const playButton = document.querySelector("button");
 
-function easSquareFlexWidth(gridNumber) {
-    let flexWidth = Math.floor(960 / gridNumber);
+playButton.addEventListener("click", () => {
+    gridNumber = parseInt(prompt("Insert grid size number: "));
+    
+    if (gridNumber > 100) {
+        alert("Please insert a number below 100");
+    } else if (!Number.isInteger(gridNumber)) {
+        alert("Please insert a number");
+    } else {
+        playEas();
+        playButton.innerText = "Reset";
+        playButton.addEventListener("click", resetEas());
+
+    }
+    
+})
+
+function playEas() {
+    easSquareFlexWidth(gridNumber);
+
+    for (let i = 0; i < gridSize(gridNumber); i++) {
+        gridMaker();
+    };
+
+    easContainer.style.display = "flex";
+
+}
+
+function resetEas() {
+    easContainer.innerHTML = "";
+    playEas();
+}
+
+function easSquareFlexWidth(gridWidth) {
+    let flexWidth = Math.floor(960 / gridWidth);
     return flexWidth.toString();
     //make this count for the border width
 }
+
 
 
 function gridMaker() {
@@ -15,8 +49,8 @@ function gridMaker() {
 
     easSquare;
     easSquareClass;
-    easSquare.style.minWidth = easSquareFlexWidth(32) + "px";
-    easSquare.style.minHeight = easSquareFlexWidth(32) + "px";
+    easSquare.style.minWidth = easSquareFlexWidth(gridNumber) + "px";
+    easSquare.style.minHeight = easSquareFlexWidth(gridNumber) + "px";
     easContainer.appendChild(easSquare);
 
     easSquare.addEventListener("mouseover", () => {
@@ -30,9 +64,5 @@ function gridMaker() {
 function gridSize(grid) {
     let gridRatio = grid * grid;
     return gridRatio;
-}
-
-for (let i = 0; i < gridSize(32); i++) {
-    gridMaker();
 }
 
