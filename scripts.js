@@ -15,12 +15,13 @@ function gridMaker() {
 
     easSquare;
     easSquareClass;
-    easSquare.style.minWidth = easSquareFlexWidth(64) + "px";
-    easSquare.style.minHeight = easSquareFlexWidth(64) + "px";
+    easSquare.style.minWidth = easSquareFlexWidth(32) + "px";
+    easSquare.style.minHeight = easSquareFlexWidth(32) + "px";
     easContainer.appendChild(easSquare);
 
     easSquare.addEventListener("mouseover", () => {
         easSquare.style.backgroundColor = "red";
+        easSquare.style.borderColor = "red";
     })
 }
 
@@ -31,7 +32,7 @@ function gridSize(grid) {
     return gridRatio;
 }
 
-for (let i = 0; i < gridSize(64); i++) {
+for (let i = 0; i < gridSize(32); i++) {
     gridMaker();
 }
 
