@@ -3,39 +3,38 @@
 const easContainer = document.querySelector("#whiteboard-container");
 const playButton = document.querySelector("button");
 
-playButton.addEventListener("click", () => {
+let gridNumber;
+
+playButton.addEventListener("click", playEas);
+
+function playEas() {
     gridNumber = parseInt(prompt("Insert grid size number: "));
-    
+
     if (gridNumber > 100) {
         alert("Please insert a number below 100");
     } else if (!Number.isInteger(gridNumber)) {
         alert("Please insert a number");
     } else {
-        playEas();
-        playButton.innerText = "Reset";
-        playButton.addEventListener("click", resetEas());
+        easGetSquareDimension(gridNumber);
 
+        for (let i = 0; i < gridSize(gridNumber); i++) {
+            gridMaker();
+        };
+
+        easContainer.style.display = "flex"
+        playButton.addEventListener("click", resetEas);
     }
-    
-})
-
-function playEas() {
-    easSquareFlexWidth(gridNumber);
-
-    for (let i = 0; i < gridSize(gridNumber); i++) {
-        gridMaker();
-    };
-
-    easContainer.style.display = "flex";
-
-}
+};
 
 function resetEas() {
+    gridNumber = "";
+    easContainer.style.display = "none";
     easContainer.innerHTML = "";
+    playButton.innerText = "Play";
     playEas();
 }
 
-function easSquareFlexWidth(gridWidth) {
+function easGetSquareDimension(gridWidth) {
     let flexWidth = Math.floor(960 / gridWidth);
     return flexWidth.toString();
     //make this count for the border width
@@ -49,8 +48,8 @@ function gridMaker() {
 
     easSquare;
     easSquareClass;
-    easSquare.style.minWidth = easSquareFlexWidth(gridNumber) + "px";
-    easSquare.style.minHeight = easSquareFlexWidth(gridNumber) + "px";
+    easSquare.style.minWidth = easGetSquareDimension(gridNumber) + "px";
+    easSquare.style.minHeight = easGetSquareDimension(gridNumber) + "px";
     easContainer.appendChild(easSquare);
 
     easSquare.addEventListener("mouseover", () => {
