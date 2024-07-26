@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rammetto+One&family=Secular+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rammetto+One&family=Secular+One&family=Titan+One&display=swap');
 
 body {
     margin-left: auto;
@@ -54,12 +54,14 @@ button {
     background-color: white;
 }
 
-#reset-button{
+#reset-button {
     margin-left: 1em;
     margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
-#grid-size{
+#grid-size {
     width: 4em;
     height: 4em;
     border-radius: 8px;
@@ -67,6 +69,17 @@ button {
     border: none;
     padding-left: 20px;
     font-family: "Rammetto One", sans-serif;
+}
+
+#user-form {
+    margin-top: 15px;
+    margin-bottom: 50px;
+}
+
+label {
+    font-family: "Titan One", sans-serif;
+    color: white;
+    font-size: 1.5em;
 }
 
 .input-button {

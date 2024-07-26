@@ -6,10 +6,7 @@ const resetButton = document.querySelector("#reset-button");
 
 let gridNumber;
 
-resetButton.addEventListener("click", () => {
-    easContainer.style.display = "none";
-    easContainer.innerHTML = "";
-});
+resetButton.addEventListener("click", resetEas);
 
 userInputForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -17,6 +14,7 @@ userInputForm.addEventListener("submit", (event) => {
     const valueGridSize = document.querySelector("#grid-size");
     gridNumber = parseInt(valueGridSize.value);
     playEas();
+
 });
 
 
@@ -34,12 +32,16 @@ function playEas() {
         };
 
         easContainer.style.display = "flex";
+
+        const easTextFieldInput = document.querySelector("#grid-size");
+        easTextFieldInput.value = '';
     }
 };
 
 function resetEas() {
     easContainer.style.display = "none";
     easContainer.innerHTML = "";
+
 }
 
 function easGetSquareDimension(gridWidth) {
