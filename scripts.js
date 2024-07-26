@@ -1,37 +1,45 @@
 // create square grids using loop
 
 const easContainer = document.querySelector("#whiteboard-container");
-const playButton = document.querySelector("button");
+const userInputForm = document.querySelector("#input-form");
+const resetButton = document.querySelector("#reset-button");
 
 let gridNumber;
 
-playButton.addEventListener("click", playEas);
+resetButton.addEventListener("click", () => {
+    easContainer.style.display = "none";
+    easContainer.innerHTML = "";
+});
+
+userInputForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const valueGridSize = document.querySelector("#grid-size");
+    gridNumber = parseInt(valueGridSize.value);
+    playEas();
+});
+
 
 function playEas() {
-    gridNumber = parseInt(prompt("Insert grid size number: "));
-
     if (gridNumber > 100) {
         alert("Please insert a number below 100");
     } else if (!Number.isInteger(gridNumber)) {
         alert("Please insert a number");
     } else {
+        resetEas();
         easGetSquareDimension(gridNumber);
 
         for (let i = 0; i < gridSize(gridNumber); i++) {
             gridMaker();
         };
 
-        easContainer.style.display = "flex"
-        playButton.addEventListener("click", resetEas);
+        easContainer.style.display = "flex";
     }
 };
 
 function resetEas() {
-    gridNumber = "";
     easContainer.style.display = "none";
     easContainer.innerHTML = "";
-    playButton.innerText = "Play";
-    playEas();
 }
 
 function easGetSquareDimension(gridWidth) {

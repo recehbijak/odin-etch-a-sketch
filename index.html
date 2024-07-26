@@ -11,13 +11,15 @@
         <h1>Etch-a-Sketch!</h1>
     </div>
     <div id="input-container" class="flex-display">
-        <button id="play-button">Play</button>
-        <div id="user-form" class="user-form">
-            <form action="">
-                <label for="grid-size">Insert grid size number: </label>
-                <input type="text" id="grid-size" name="grid-size">
-                <input type="submit" value="submit">
+        <div class="input-label">
+            <label for="grid-size">Insert grid size number: </label>
+        </div>
+        <div id="user-form" class="flex-display">
+            <form action="" id="input-form">
+                    <input type="text" id="grid-size" name="grid-size">
+                <input type="submit" value="Submit" class="input-button">
             </form>
+            <button id="reset-button" class="input-button">Reset</button>
         </div>
     </div>
     <div class="whiteboard-container" id="whiteboard-container">
