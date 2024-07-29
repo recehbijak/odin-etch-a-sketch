@@ -47,7 +47,6 @@ function resetEas() {
 function easGetSquareDimension(gridWidth) {
     let flexWidth = Math.floor(960 / gridWidth);
     return flexWidth.toString();
-    //make this count for the border width
 }
 
 
@@ -62,13 +61,15 @@ function gridMaker() {
     easSquare.style.minHeight = easGetSquareDimension(gridNumber) + "px";
     easContainer.appendChild(easSquare);
 
+    const generateColor = '#' + (Math.random()*(1<<24)|0).toString(16);
+
     easSquare.addEventListener("mouseover", () => {
-        easSquare.style.backgroundColor = "red";
-        easSquare.style.borderColor = "red";
+        easSquare.style.backgroundColor = generateColor;
+        easSquare.style.borderColor = generateColor;
     })
 }
 
-//grid parameter should be taken from prompt
+
 
 function gridSize(grid) {
     let gridRatio = grid * grid;
