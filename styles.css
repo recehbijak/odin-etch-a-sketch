@@ -33,6 +33,15 @@ button {
     margin: 2em;
 }
 
+.input-button:hover {
+    background-color: white;
+    color: #2f3c8a;
+}
+
+.input-button:active {
+    transform: scale(0.9, 0.9);
+}
+
 .whiteboard-container {
     height: 960px;
     display: none;
@@ -41,6 +50,7 @@ button {
     flex-wrap: wrap;
     padding: 0;
     background-color: white;
+    margin-bottom: 100px;
 }
 
 .eas-square {
@@ -90,7 +100,7 @@ label {
     width: 8em;
     height: 4em;
     border-radius: 8px;
-    border-width: 2px;
+    border-width: 3px;
     padding: 0;
 }
 
